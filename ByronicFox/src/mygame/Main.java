@@ -1,6 +1,7 @@
 package mygame;
 
 import com.jme3.app.SimpleApplication;
+import com.jme3.input.controls.KeyTrigger;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
 import com.jme3.material.Material;
@@ -17,6 +18,8 @@ import com.jme3.scene.shape.Box;
  * @author normenhansen
  */
 public class Main extends SimpleApplication {
+    
+    GameRules game;
 
     public static void main(String[] args) {
         Main app = new Main();
@@ -25,7 +28,9 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        stateManager.attach(new GameRules(this));
+        game = new GameRules(this);
+        stateManager.attach(game);
+        setupKeys();
         viewPort.setBackgroundColor(new ColorRGBA(0.7f, 0.8f, 1f, 1f));
         
     }
@@ -40,6 +45,10 @@ public class Main extends SimpleApplication {
         //TODO: add render code
     }
 
+        public void setupKeys(){
+            inputManager.addMapping("Jump", new KeyTrigger(keyInput.KEY_SPACE));
+            inputManager.addListener(game, "Jump");
+        }
     
 
 }

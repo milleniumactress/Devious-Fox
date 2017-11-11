@@ -39,7 +39,7 @@ import java.util.LinkedList;
  *
  * @author Ravi
  */
-public class GameRules extends AbstractAppState {
+public class GameRules extends AbstractAppState implements ActionListener{
 
     //atribut-atribut inisialisasi game
     private Node rootNode;
@@ -77,21 +77,7 @@ public class GameRules extends AbstractAppState {
     private Vector3f playerWalkDirection = Vector3f.ZERO;
     private CameraNode cameraNode;
     private CharacterController mcc;
-    //action listener
-    private ActionListener mainActionListener = new ActionListener() {
-        public void setUpKeys() {
-            inputManager.addMapping("Jump", new KeyTrigger(KeyInput.KEY_SPACE));
-            inputManager.addListener(mainActionListener, "Jump");
-        }
-
-        @Override
-        public void onAction(String name, boolean isPressed, float tpf) {
-               if(name.equals("Jump" )&& !isPressed){
-                mainCharacterControl.jump();
-            }
-        }
-    };
-
+    
     public GameRules(SimpleApplication gameApp) {
         rootNode = gameApp.getRootNode();
         assetManager = gameApp.getAssetManager();
@@ -235,6 +221,8 @@ public class GameRules extends AbstractAppState {
         mainCharacterControl = new CharacterControl(mainCharacterShape, 1.0f);
         //CharacterController cc = new CharacterController(mainCharacterControl);
         mainCharacterSpatial.addControl(mainCharacterControl);
+        mainCharacterControl.setJumpSpeed(30);
+        mainCharacterControl.setGravity(50);
         bulletAppState.getPhysicsSpace().add(mainCharacterControl);
 
         //camera work
@@ -257,6 +245,13 @@ public class GameRules extends AbstractAppState {
         dl.setColor(ColorRGBA.White);
         dl.setDirection(new Vector3f(2.8f, -2.8f, -2.8f).normalizeLocal());
         rootNode.addLight(dl);
+    }
+
+    @Override
+    public void onAction(String name, boolean isPressed, float tpf) {
+        if(name.equals("Jump")&&!isPressed){
+            mainCharacterControl.jump();
+        }
     }
 
 }
