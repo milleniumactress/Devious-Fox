@@ -1,5 +1,6 @@
 package mygame;
 
+import GameScene.MainScene;
 import com.jme3.app.SimpleApplication;
 import com.jme3.light.AmbientLight;
 import com.jme3.light.DirectionalLight;
@@ -25,7 +26,7 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {
-        stateManager.attach(new GameRules(this));
+        stateManager.attach(new MainScene(this));
         viewPort.setBackgroundColor(new ColorRGBA(0.7f, 0.8f, 1f, 1f));
         
     }
