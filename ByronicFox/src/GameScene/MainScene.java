@@ -162,9 +162,10 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
         //main character control
         inputManager.addMapping("Jump", new KeyTrigger(KeyInput.KEY_SPACE));
         inputManager.addListener(this, "Jump");
-
+        inputManager.addMapping("Restart", new KeyTrigger(KeyInput.KEY_R));
+        inputManager.addListener(this, "Restart");
+        //inputManager.
         mainCharacterControl = new CharacterControl(mainCharacterShape, 1.0f);
-        //CharacterController cc = new CharacterController(mainCharacterControl);
         mainCharacterControl.setJumpSpeed(40);
         mainCharacterControl.setGravity(100);
         mainCharacterSpatial.addControl(mainCharacterControl);
@@ -174,7 +175,7 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
         flyCamera.setMoveSpeed(100f);
         chaseCamera = new ChaseCamera(camera, mainCharacterSpatial, inputManager);
         chaseCamera.setDefaultHorizontalRotation(-3.1f);
-        chaseCamera.setDefaultVerticalRotation(0.2f);
+        chaseCamera.setDefaultVerticalRotation(0f);
         setUpLight();
         rootNode.attachChild(localRootNode);
 
@@ -214,8 +215,6 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
             float z = Math.abs(v1.z - v2.z);
             if (x <= 0.5 && y <= 1.6 && z <= 0.5) {
                  setEnabled(false);
-                 inputManager.clearRawInputListeners();
-                 //System.out.println("game over");
 
             }
             newSpatial.move(0, 0, tpf * -20);
@@ -240,11 +239,17 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
 
 
     }
-
+    
     @Override
     public void onAction(String name, boolean isPressed, float tpf) {
-        if (name.equals("Jump") && !isPressed) {
+        if (name.equals("Jump") && !isPressed&&isEnabled()) {
             mainCharacterControl.jump();
+        }
+        if(name.equals("Restart")&& !isPressed && !isEnabled()){
+            setEnabled(true);
+            inputManager.addMapping("Jump", new KeyTrigger(KeyInput.KEY_SPACE));
+            obstacleSpatial.setLocalTranslation(0, 0, 50);
+            enemySpatial.setLocalTranslation(0, 7f, 25);
         }
     }
 
@@ -259,3 +264,4 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
     }
 
 }
+
