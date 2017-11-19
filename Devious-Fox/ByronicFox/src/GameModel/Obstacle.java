@@ -14,30 +14,15 @@ import com.jme3.renderer.ViewPort;
  *
  * @author Ravi
  */
-public class Obstacle extends GameObject{
+public abstract class Obstacle extends GameObject{
     
     protected Material material;
     
     public Obstacle(AssetManager assetManager, String name, String path, 
             float scale, float x, float y, float z, Material material) {
-        super(assetManager, name, path, scale, x, y, z);
+        super(assetManager, name, path,scale
+        );
         this.material=material;
     }
-
-    @Override
-    public void setLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlUpdate(float tpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
 }

@@ -7,24 +7,16 @@ package GameModel;
 
 import com.jme3.asset.AssetManager;
 import com.jme3.material.Material;
-import com.jme3.renderer.RenderManager;
-import com.jme3.renderer.ViewPort;
 import com.jme3.scene.Spatial;
 
 /**
  *
  * @author Ravi
  */
-public class Enemy extends Obstacle{
-    
-    protected Material material;
-    private float x,y,z;
-    
-    public Enemy(AssetManager assetManager, String name, String path, 
-            float scale, float x, float y, float z, 
-            float vx, float vy, float vz, Material material) {
-        super(assetManager, name, path,scale, x, y, z, material);
-        this.material=material;
+public class Tree extends Obstacle {
+
+    public Tree(AssetManager assetManager, String name, String path, float scale, float x, float y, float z, Material material) {
+        super(assetManager, name, path, scale, x, y, z, material);
     }
 
     @Override
@@ -34,14 +26,12 @@ public class Enemy extends Obstacle{
 
     @Override
     public Spatial getSpatial() {
-       return this.spatial;
+        return this.spatial;
     }
 
     @Override
     public void setScale(float scale) {
         this.spatial.setLocalScale(scale);
     }
-    
-    
     
 }

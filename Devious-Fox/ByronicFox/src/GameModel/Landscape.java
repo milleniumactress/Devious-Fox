@@ -6,9 +6,7 @@
 package GameModel;
 
 import com.jme3.asset.AssetManager;
-import com.jme3.material.Material;
-import com.jme3.renderer.RenderManager;
-import com.jme3.renderer.ViewPort;
+import com.jme3.scene.Spatial;
 
 /**
  *
@@ -16,27 +14,40 @@ import com.jme3.renderer.ViewPort;
  */
 public class Landscape extends GameObject {
     
-    protected Material material;
+    protected float scale;
     
-    public Landscape(AssetManager assetManager, String name, String path, 
-            float scale, float x, float y, float z, Material material) {
-        super(assetManager, name, path, scale, x, y, z);
-        this.material=material;
+    public Landscape(AssetManager assetManager, String name, String path, float scale) {
+        super(assetManager, name, path,scale);
+        this.scale=scale;
+    }
+    
+    /**
+     * getter nama spatial
+     * @return nama spatial 
+     */
+    @Override
+    public String getName() {
+        return this.spatial.getName();
+    }
+    
+    /**
+     * getter spatial
+     * @return spatial landscape
+     */
+    @Override
+    public Spatial getSpatial() {
+        return this.spatial;
+    }
+    
+    /**
+     * setter ukuran spatial
+     * @param scale ukuran 
+     */
+    @Override
+    public void setScale(float scale) {
+       this.spatial.setLocalScale(scale);
     }
 
-    @Override
-    public void setLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlUpdate(float tpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
     
 }

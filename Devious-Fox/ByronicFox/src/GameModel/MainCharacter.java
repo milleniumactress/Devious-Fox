@@ -19,65 +19,36 @@ import com.jme3.renderer.ViewPort;
  *
  * @author Ravi
  */
-public class MainCharacter extends GameObject {
+public abstract class MainCharacter extends GameObject {
 
     protected Material material;
-    protected ActionListener actionListener;
-    protected CharacterControl mainCharacterContorl;
+    protected float x,y,z;//lokasi main character
+
 
     /**
      * inisialisasi Main Character
      *
      * @param assetManager
-     * @param name
-     * @param path
-     * @param scale
-     * @param x
-     * @param y
-     * @param z
-     * @param material
+     * @param name nama main character
+     * @param path alamat main character
+     * @param scale ukuran main character
+     * @param x koordinat X objek
+     * @param y koordinat Y objek
+     * @param z koordinat Z objek
+     * @param material material main character
      */
     public MainCharacter(AssetManager assetManager, String name, String path,
             float scale, float x, float y, float z, Material material) {
-        super(assetManager, name, path, scale, x, y, z);
+        super(assetManager, name, path,scale);
         this.material = material;
+        this.x=x;
+        this.y=y;
+        this.z=z;
+        
     }
     
-    /**
-     * method untuk mengikat tombol dengan karakter
-     * @param inputManager 
-     */
-    public void setUpMapping(InputManager inputManager){
-        inputManager.addMapping("jump", new KeyTrigger(KeyInput.KEY_SPACE));
-        inputManager.addListener(actionListener, "jump");
-    }
-
-    @Override
-    public void setLocation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlUpdate(float tpf) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    protected void controlRender(RenderManager rm, ViewPort vp) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public abstract void setLocation(float x, float y, float z);
     
-    /**
-     * method untuk aksi-aksi yang dilakukan oleh karakter
-     * @param name
-     * @param isPressed
-     * @param tpf 
-     */
-//    @Override
-//    public void onAction(String name, boolean isPressed, float tpf) {
-//        if (name.equals("Jump") && !isPressed) {
-//            mainCharacterContorl.jump();
-//        }
-//
-//    }
+    
+    
 }
