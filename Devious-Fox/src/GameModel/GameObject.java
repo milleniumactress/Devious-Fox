@@ -20,7 +20,7 @@ public abstract class GameObject{
     
     protected Spatial spatial;
     protected Material material;
-    
+    protected String name;
     
     /**
      * Constructor untuk membuat sebuah objek diam
@@ -38,5 +38,6 @@ public abstract class GameObject{
     public abstract String getName();
     public abstract Spatial getSpatial();
     public abstract void setScale(float scale);
+    public abstract void setLocation(float x, float y, float z);
     
 }

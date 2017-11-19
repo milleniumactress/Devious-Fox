@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/GameModel/Enemy.java</file>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/GameModel/MainCharacter.java</file>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/View/MainScene.java</file>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/Controller/Main.java</file>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/GameModel/Tree.java</file>
-            <file>file:/C:/Users/Muhammad%20Ravi/Downloads/Devious-Fox-RIchard%20(1)/Devious-Fox/ByronicFox/src/GameModel/Fox.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/GameObject.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/Tree.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/MainCharacter.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/Landscape.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/Enemy.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/GameModel/Fox.java</file>
+            <file>file:/C:/Users/Muhammad%20Ravi/Documents/Devious-Fox/Devious-Fox/src/View/MainScene.java</file>
         </group>
     </open-files>
 </project-private>

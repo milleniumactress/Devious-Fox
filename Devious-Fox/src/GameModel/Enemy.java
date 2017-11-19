@@ -41,6 +41,11 @@ public class Enemy extends Obstacle{
     public void setScale(float scale) {
         this.spatial.setLocalScale(scale);
     }
+
+    @Override
+    public void setLocation(float x, float y, float z) {
+       this.setLocation(x, y, z);
+    }
     
     
     

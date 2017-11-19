@@ -55,6 +55,11 @@ public class Landscape extends GameObject {
        this.spatial.setLocalScale(scale);
     }
 
+    @Override
+    public void setLocation(float x, float y, float z) {
+        this.setLocation(x, y, z);
+    }
+
    
     
 }
