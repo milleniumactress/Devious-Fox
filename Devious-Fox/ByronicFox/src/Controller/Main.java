@@ -15,7 +15,7 @@ import com.jme3.scene.Geometry;
 import com.jme3.scene.shape.Box;
 
 /**
- * This is the Main Class of your Game. You should only do initialization here.
+ * Kelas Main
  * Move your Logic into AppStates or Controls
  *
  * @author Richard wijaya
@@ -34,7 +34,9 @@ public class Main extends SimpleApplication implements ActionListener {
         Main app = new Main();
         app.start();
     }
-
+/**
+ *  Method yang menginisialisasi applikasi
+ */
     @Override
     public void simpleInitApp() {
         inputManager.addMapping("Restart", new KeyTrigger(keyInput.KEY_R));
@@ -82,7 +84,10 @@ public class Main extends SimpleApplication implements ActionListener {
         gameOverText.setLocalTranslation(180, 250, 0);
 
     }
-
+/**
+ * Method yang mengupdate applikasi setiap frame
+ * @param tpf kecepatan per frame
+ */
     @Override
     public void simpleUpdate(float tpf) {
         if (m.isEnabled()) {
@@ -102,7 +107,9 @@ public class Main extends SimpleApplication implements ActionListener {
             setHighScore();
         }
     }
-
+/**
+ * Method yang mengeset highscore
+ */
     private void setHighScore() {
         if (Long.parseLong(currentScore.getText()) > Long.parseLong(highScore.getText())) {
             highscore = score;
@@ -115,7 +122,12 @@ public class Main extends SimpleApplication implements ActionListener {
     public void simpleRender(RenderManager rm) {
         //TODO: add render code
     }
-
+/**
+ * Method yang melakukan aksi ketika input atau trigger diberikan
+ * @param name nama gerakan
+ * @param isPressed kondisi tombol tertekan
+ * @param tpf kecepatan per frame
+ */
     @Override
     public void onAction(String name, boolean isPressed, float tpf) {
         if (!m.isEnabled() && name.equals("Restart")) {
