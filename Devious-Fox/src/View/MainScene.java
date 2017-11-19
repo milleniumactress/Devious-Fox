@@ -113,10 +113,10 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
         mainCharacter = new Fox(assetManager, "Fox", "Models/foxAnimations/foxAnimations.j3o",
                 1f, 0, 0, 0, mainMaterial);//inisialisasi main character
         mainCharacterSpatial = mainCharacter.getSpatial();
-        obstacle = new Tree(assetManager, "tree", "Models/Tree/Tree.j3o", 0.9f, 0.0f, 0.0f, 10.0f, mainMaterial) {
+        obstacle = new Tree(assetManager, "tree", "Models/Tree/Tree.j3o", 0.9f, 0, 0, 10) {
         };//inisialisasi obstacle
         landscape = new Landscape(assetManager, "landscape", "Scenes/MainScene.j3o", 5f); //inisialisasi landscape
-        enemy = new Enemy(assetManager, "falcon", "Models/falcone/falcone.j3o", 0.15f, 0, -randomLocation, 0, 0, 0, -30f, mainMaterial);//inisialisasi enemy
+        enemy = new Enemy(assetManager, "falcon", "Models/falcone/falcone.j3o", 0.15f, 0, -randomLocation, 0, 0, 0, -30f);//inisialisasi enemy
 
     }
 

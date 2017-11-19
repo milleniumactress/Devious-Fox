@@ -15,8 +15,8 @@ import com.jme3.scene.Spatial;
  */
 public class Tree extends Obstacle {
 
-    public Tree(AssetManager assetManager, String name, String path, float scale, float x, float y, float z, Material material) {
-        super(assetManager, name, path, scale, x, y, z, material);
+    public Tree(AssetManager assetManager, String name, String path, float scale, float x, float y, float z) {
+        super(assetManager, name, path, scale, x, y, z);
     }
 
     @Override

@@ -19,7 +19,7 @@ public abstract class Obstacle extends GameObject{
     protected Material material;
     
     public Obstacle(AssetManager assetManager, String name, String path, 
-            float scale, float x, float y, float z, Material material) {
+            float scale, float x, float y, float z) {
         super(assetManager, name, path,scale
         );
         this.material=material;

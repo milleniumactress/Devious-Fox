@@ -22,8 +22,8 @@ public class Enemy extends Obstacle{
     
     public Enemy(AssetManager assetManager, String name, String path, 
             float scale, float x, float y, float z, 
-            float vx, float vy, float vz, Material material) {
-        super(assetManager, name, path,scale, x, y, z, material);
+            float vx, float vy, float vz) {
+        super(assetManager, name, path,scale, x, y, z);
         this.material=material;
     }
 
