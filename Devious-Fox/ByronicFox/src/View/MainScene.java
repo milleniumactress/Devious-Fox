@@ -37,6 +37,7 @@ import com.jme3.renderer.Camera;
 import com.jme3.scene.CameraNode;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.util.SkyFactory;
 import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -67,7 +68,7 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
     private InputManager inputManager;
 
     //atribut-atribut lantai
-    private Landscape landscape;
+    private GameObject landscape;
     private Spatial ground;
     private LinkedList<Spatial> listOfGrounds;
     private LinkedList<Spatial> listOfObstacle;
@@ -90,6 +91,7 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
 
     //action listener
     private ActionListener mainActionListener;
+
     //
     /**
      * constructor untuk membuat scene game. menempelkan semua objeck ke dalam
@@ -108,15 +110,22 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
 
         mainMaterial = new Material(assetManager, "Common/MatDefs/Misc/ShowNormals.j3md");
 
-        mainCharacter = new MainCharacter(assetManager, "Fox", "Models/foxAnimations/foxAnimations.j3o",
+        mainCharacter = new Fox(assetManager, "Fox", "Models/foxAnimations/foxAnimations.j3o",
                 1f, 0, 0, 0, mainMaterial);//inisialisasi main character
         mainCharacterSpatial = mainCharacter.getSpatial();
-        obstacle = new Obstacle(assetManager, "tree", "Models/Tree/Tree.j3o", 0.9f, 0, 0, 10, mainMaterial);//inisialisasi obstacle
-        landscape = new Landscape(assetManager, "landscape", "Scenes/MainScene.j3o", 5f, 0, 0, 0, mainMaterial); //inisialisasi landscape
+        obstacle = new Tree(assetManager, "tree", "Models/Tree/Tree.j3o", 0.9f, 0.0f, 0.0f, 10.0f, mainMaterial) {
+        };//inisialisasi obstacle
+        landscape = new Landscape(assetManager, "landscape", "Scenes/MainScene.j3o", 5f); //inisialisasi landscape
         enemy = new Enemy(assetManager, "falcon", "Models/falcone/falcone.j3o", 0.15f, 0, -randomLocation, 0, 0, 0, -30f, mainMaterial);//inisialisasi enemy
 
     }
 
+    /**
+     * method untuk menginisialisasi semuah objek ke dalam scene
+     *
+     * @param stateManager
+     * @param app
+     */
     @Override
     public void initialize(AppStateManager stateManager, Application app) {
         super.initialize(stateManager, app);
@@ -125,9 +134,9 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
         rootNode.attachChild(localRootNode);
 
         bulletAppState.setDebugEnabled(false);
-        
+
         //attach landscape, obstacle, enemy, 
-        obstacleSpatial=obstacle.getSpatial();
+        obstacleSpatial = obstacle.getSpatial();
         obstacleSpatial.setLocalTranslation(0, 0, 100);
         localRootNode.attachChild(landscape.getSpatial());
         localRootNode.attachChild(obstacleSpatial);
@@ -175,7 +184,7 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
         flyCamera.setMoveSpeed(100f);
         chaseCamera = new ChaseCamera(camera, mainCharacterSpatial, inputManager);
         chaseCamera.setDefaultHorizontalRotation(-3.1f);
-        chaseCamera.setDefaultVerticalRotation(0f);
+        chaseCamera.setDefaultVerticalRotation(0.2f);
         setUpLight();
         rootNode.attachChild(localRootNode);
 
@@ -200,11 +209,15 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
 
     }
 
+    /**
+     * method untuk menjalankan terain dan obstacle
+     *
+     * @param tpf
+     */
     @Override
     public void update(float tpf) {
 
 //untuk object
-  
         Vector3f v2 = mainCharacterSpatial.getLocalTranslation();
         Iterator<Spatial> orbit = listOfObstacle.iterator();
         while (orbit.hasNext()) {
@@ -214,7 +227,7 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
             float y = Math.abs(v1.y - v2.y);
             float z = Math.abs(v1.z - v2.z);
             if (x <= 0.5 && y <= 1.6 && z <= 0.5) {
-                 setEnabled(false);
+                setEnabled(false);
 
             }
             newSpatial.move(0, 0, tpf * -20);
@@ -231,21 +244,19 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
             if (n.getLocalTranslation().getZ() <= -300) {
                 n.getLocalTranslation().setZ(n.getLocalTranslation().getZ() + 200);
             }
-            
 
         }
 
         enemySpatial.move(new Vector3f(0, 0, -20 * tpf));
 
-
     }
-    
+
     @Override
     public void onAction(String name, boolean isPressed, float tpf) {
-        if (name.equals("Jump") && !isPressed&&isEnabled()) {
+        if (name.equals("Jump") && !isPressed && isEnabled()) {
             mainCharacterControl.jump();
         }
-        if(name.equals("Restart")&& !isPressed && !isEnabled()){
+        if (name.equals("Restart") && !isPressed && !isEnabled()) {
             setEnabled(true);
             inputManager.addMapping("Jump", new KeyTrigger(KeyInput.KEY_SPACE));
             obstacleSpatial.setLocalTranslation(0, 0, 50);
@@ -264,4 +275,3 @@ public class MainScene extends AbstractAppState implements ActionListener, AnimE
     }
 
 }
-
