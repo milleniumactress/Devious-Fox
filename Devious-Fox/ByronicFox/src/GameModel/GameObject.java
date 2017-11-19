@@ -40,7 +40,7 @@ public abstract class GameObject extends AbstractControl {
     
     public abstract void setLocation();
     /**
-     * method untuk meng-update objek secar kontinu
+     * method untuk meng-update objek secara kontinu
      * @param tpf kecepatan perubahan objek
      */
     @Override
